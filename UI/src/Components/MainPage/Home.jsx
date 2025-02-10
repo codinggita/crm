@@ -47,13 +47,15 @@ const LoginPage = () => {
               />
             </div>
 
-            <div className="text-right text-orange-500 text-sm cursor-pointer mb-3">
+            <div 
+              className="text-right text-orange-500 text-sm cursor-pointer mb-3" 
+              onClick={() => navigate("/changePassword")}>
               Forgot your password?
             </div>
 
             <button 
               type="submit" 
-              className="w-full flex items-center justify-center gap-2 p-3 bg-orange-400 text-white text-lg font-semibold rounded-lg hover:bg-orange-500 transition-all"
+              className="w-full flex items-center cursor-pointer justify-center gap-2 p-3 bg-orange-400 text-white text-lg font-semibold rounded-lg hover:bg-orange-500 transition-all"
               onClick={() => navigate("/auth")}
             >
               Continue <FaArrowRight className="text-xl" />
