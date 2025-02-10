@@ -19,7 +19,7 @@ const Form = () => {
           <div className="p-3 rounded-lg flex space-x-2">
             <button className="w-1/2 py-2 text-orange-400 font-bold rounded-lg">Representative</button>
             <button 
-              className="w-1/2 py-2 text-black font-bold rounded-lg" 
+              className="w-1/2 py-2 text-black font-bold rounded-lg cursor-pointer" 
               onClick={() => navigate("/Client")}>
               Client/Supplier
               </button>
@@ -72,7 +72,9 @@ const Form = () => {
             </div>
           </div>
 
-          <button className="w-full bg-orange-400 text-white font-bold py-2 mt-6 rounded-lg flex items-center justify-center">
+          <button 
+            className="w-full bg-orange-400 text-white font-bold py-2 mt-6 rounded-lg flex items-center justify-center cursor-pointer"
+            onClick={() => navigate("/")}>
             Continue <span className="ml-2"><FaArrowRight/></span>
           </button>
 

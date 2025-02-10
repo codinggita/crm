@@ -4,10 +4,9 @@ import Home from "./Components/MainPage/Home";
 import Devzone from "./Components/DevZone/Dev";
 import Account from "./Components/CreateAccount/Account"
 import Client from "./Components/CreateAccount/Client_Supplier/Client"
-// import Supplier from "./Authentification/createAccount/client/spplier/supplier"
-// import Change from "./Authentification/changePassword/change";
-// import Note from "./Authentification/changePassword/notification/note"; 
-
+import Change from "./Components/ChangePassword/Change";
+import Password from "./Components/ChangePassword/SetPassword/Password"; 
+import Message from './Components/ChangePassword/Notification/Message'
 const App = () => {
   return (
     <Router>
@@ -16,9 +15,9 @@ const App = () => {
         <Route path="/auth" element={<Devzone />} />
         <Route path="/createAccount" element={<Account/>}/>
         <Route path="/Client" element={<Client/>}/>
-        {/* <Route path="/Supplier" element={<Supplier/>}/>
-        <Route path="/auth/changePassword" element={<Change />} />
-        <Route path="/changed" element={<Note/>}/>  */}
+        <Route path="/changePassword" element={<Change />} />
+        <Route path="/SetPassword" element={<Password/>}/>
+        <Route path="/Notification" element={<Message/>}/>
       </Routes>
     </Router>
   );

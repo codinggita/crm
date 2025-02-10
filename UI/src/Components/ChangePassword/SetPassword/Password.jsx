@@ -3,10 +3,10 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const ModulLoginRegister = () => {
-      const navigate = useNavigate();
-    
+  const navigate = useNavigate();
+
   return (
-    <div className="flex h-screen items-center justify-center overflow-hidden">
+    <div className="flex h-screen items-center overflow-hidden">
       {/* Left Side - Form */}
       <div className="flex flex-1 items-center justify-center bg-white p-6">
         <div className="w-full max-w-md text-center">
@@ -24,6 +24,24 @@ const ModulLoginRegister = () => {
                 className="w-full mt-1 p-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
+
+            <div className="mb-4 text-left">
+              <label className="text-sm text-gray-700">Reset Code</label>
+              <input 
+                type="text" 
+                placeholder="Enter reset code"
+                className="w-full mt-1 p-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+              />
+            </div>
+
+            <div className="mb-4 text-left">
+              <label className="text-sm text-gray-700">New Password</label>
+              <input 
+                type="password" 
+                placeholder="Enter new password"
+                className="w-full mt-1 p-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+              />
+            </div>
           </div>
 
           <div className="flex justify-between gap-4 mt-4">
@@ -31,15 +49,15 @@ const ModulLoginRegister = () => {
               <FaArrowLeft className="text-lg" /> Back
             </button>
             <button 
-                className="flex-1 bg-orange-500 text-white p-3 rounded-lg flex items-center justify-center gap-2 cursor-pointer"
-                onClick={() => navigate("/SetPassword")}>
-                Next <FaArrowRight className="text-lg" />
+              className="flex-1 bg-orange-500 text-white p-3 rounded-lg flex items-center justify-center gap-2 cursor-pointer"
+              onClick={() => navigate("/Notification")}>
+              Next <FaArrowRight className="text-lg" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Right Side - Image (Same as Home.jsx) */}
+      {/* Right Side - Image (Remains Unchanged) */}
       <div className="hidden lg:flex flex-1 items-center justify-center overflow-hidden">
         <img 
           className="absolute top-0 right-0 w-1/2 h-screen object-cover" 

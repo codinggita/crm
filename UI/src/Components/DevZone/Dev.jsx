@@ -20,11 +20,11 @@ const ModulLoginRegister = () => {
               (role, index) => (
                 <button
                   key={index}
-                  className={`flex items-center justify-center gap-2 px-6 py-4 w-full rounded-lg text-base transition-all 
+                  className={`flex items-center justify-center gap-2 px-6 py-4 w-full rounded-lg text-base transition-all
                     ${
                       role === "Change Password"
-                        ? "border border-orange-400 text-orange-500 hover:bg-orange-500 hover:text-white"
-                        : "bg-orange-400 text-white hover:bg-orange-600"
+                        ? "border border-orange-400 text-orange-500 hover:bg-orange-500 hover:text-white corsor-pointer"
+                        : "bg-orange-400 text-white hover:bg-orange-600 cursor-pointer"
                     }`}
                 >
                   <b>Continue as {role}</b>
