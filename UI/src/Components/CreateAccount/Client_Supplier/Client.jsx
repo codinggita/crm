@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ModulLoginRegister = () => {
   const [isClient, setIsClient] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="flex h-screen w-full bg-white">
@@ -12,16 +14,16 @@ const ModulLoginRegister = () => {
             <h2 className="text-3xl font-bold">Create Account</h2>
             <p className="text-gray-600 mt-2">
               Already have an account?{" "}
-              <span className="text-orange-400 font-bold cursor-pointer">
+              <span className="text-orange-400 font-bold cursor-pointer" onClick={() => navigate("/")}>
                 Log in
               </span>
             </p>
           </div>
 
           <div className="p-3 rounded-lg flex space-x-2">
-            <button className="w-1/2 py-2 text-orange-400 font-bold rounded-lg">Representative</button>
+            <button className="w-1/2 py-2 text-orange-400 font-bold rounded-lg cursor-pointer">Representative</button>
             <button 
-              className="w-1/2 py-2 text-black font-bold rounded-lg" 
+              className="w-1/2 py-2 text-black font-bold rounded-lg cursor-pointer" 
               onClick={() => navigate("/Client")}>
               Client/Supplier
             </button>
@@ -35,7 +37,7 @@ const ModulLoginRegister = () => {
           <div className="p-3 flex space-x-2">
             <button
               className={`w-1/2 py-2 font-bold rounded-lg ${
-                isClient ? "bg-orange-500 text-white" : "text-gray-600"
+                isClient ? "bg-orange-500 text-white" : "text-gray-600 cursor-pointer"
               }`}
               onClick={() => setIsClient(true)}
             >
@@ -43,7 +45,7 @@ const ModulLoginRegister = () => {
             </button>
             <button
               className={`w-1/2 py-2 font-bold rounded-lg ${
-                !isClient ? "bg-orange-500 text-white" : "text-gray-600"
+                !isClient ? "bg-orange-500 text-white" : "text-gray-600 cursor-pointer"
               }`}
               onClick={() => setIsClient(false)}
             >
@@ -145,7 +147,7 @@ const ModulLoginRegister = () => {
             </div>
 
             {/* Register Button */}
-            <button className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition">
+            <button className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition cursor-pointer">
               {isClient ? "Register as Client" : "Register as Supplier"}
             </button>
           </form>
