@@ -1,7 +1,10 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ModulLoginRegister = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex h-screen w-full">
       {/* Left Side - Form */}
@@ -20,6 +23,12 @@ const ModulLoginRegister = () => {
               (role, index) => (
                 <button
                   key={index}
+                  onClick={() => {
+                    if (role === "SuperAdmin") {
+                      navigate("/Dashboard");
+                    }
+                    // Add more conditions if you want to handle other roles.
+                  }}
                   className={`flex items-center justify-center gap-2 px-6 py-4 w-full rounded-lg text-base transition-all
                     ${
                       role === "Change Password"
