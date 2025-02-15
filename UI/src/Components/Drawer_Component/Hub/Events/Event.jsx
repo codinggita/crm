@@ -305,7 +305,7 @@ const Events = () => {
             </div>
           </div>
           {/* Item 6 – User Information (hidden in original) */}
-          <div className="w-[1290px] h-[60px] hidden flex flex-row items-start justify-start px-[30px] box-border text-center">
+          <div className="w-[1290px] h-[60px] hidden flex-row items-start justify-start px-[30px] box-border text-center">
             <div className="w-[100px] h-[60px] flex flex-row items-center justify-start text-left text-[18px] text-[#f6f9fc] font-[FontAwesome5Free]">
               <div className="w-10 h-10 relative rounded-lg bg-[#40a1d3] border border-[#236bb4] flex flex-row items-center justify-center">
                 <div className="relative">user</div>
