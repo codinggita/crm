@@ -26,7 +26,7 @@ const UserProfile = ({ onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg border border-white flex items-center justify-center text-[16px] text-[#333] hover:bg-gray-100 transition-colors"
+            className="w-8 h-8 rounded-lg border border-white flex items-center justify-center text-[16px] text-[#333] hover:bg-gray-100 transition-colors cursor-pointer"
           >
             <FaTimes />
           </button>
