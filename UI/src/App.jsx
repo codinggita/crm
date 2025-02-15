@@ -7,7 +7,10 @@ import Client from "./Components/CreateAccount/Client_Supplier/Client"
 import Change from "./Components/ChangePassword/Change";
 import Password from "./Components/ChangePassword/SetPassword/Password"; 
 import Message from './Components/ChangePassword/Notification/Message'
+import Drawer from './Components/Dashboard/Sidebar/Drawer';
+
 const App = () => {
+  
   return (
     <Router>
       <Routes>
@@ -18,6 +21,7 @@ const App = () => {
         <Route path="/changePassword" element={<Change />} />
         <Route path="/SetPassword" element={<Password/>}/>
         <Route path="/Notification" element={<Message/>}/>
+        <Route path="/Dashboard" element={<Drawer/>}/>
       </Routes>
     </Router>
   );
