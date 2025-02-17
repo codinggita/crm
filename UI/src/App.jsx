@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Devzone />} />
-        <Route path="/createAccount" element={<Account/>}/>
+        <Route path="/createAccount/Admin" element={<Account/>}/>
         <Route path="/Client" element={<Client/>}/>
         <Route path="/changePassword" element={<Change />} />
         <Route path="/SetPassword" element={<Password/>}/>
