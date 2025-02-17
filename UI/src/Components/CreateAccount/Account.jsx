@@ -166,7 +166,7 @@ const Form = () => {
       <div className="w-1/2 h-screen fixed top-0 right-0">
         <img
           className="w-full h-full object-cover"
-          src="./Aside.jpg"
+          src="/Aside.jpg"
           alt="Background"
         />
       </div>

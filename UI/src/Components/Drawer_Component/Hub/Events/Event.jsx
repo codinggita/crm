@@ -1,6 +1,20 @@
-import { React, useCallback } from 'react';
+import { React, useCallback, useState } from 'react';
 import { FaSearch, FaArrowRight, FaSync, FaCalendarAlt, FaSort, FaEllipsisH, FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const Events = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const [statusText, setStatusText] = useState("");
+
+  const handleDateChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
   const onActionsContainerClick = useCallback(() => {
     // Add your code here
   }, []);
@@ -45,9 +59,13 @@ const Events = () => {
                   </div>
                   <div className="flex-1 h-12 flex flex-col items-start justify-center py-1">
                     <div className="flex flex-row items-center justify-start">
-                      <div className="relative tracking-normal leading-6">
-                        Search....
-                      </div>
+                      <input
+                      type="text"
+                      value={searchText}
+                      onChange={(e) => setSearchText(e.target.value)} 
+                      placeholder="Search...."
+                      className="w-full h-full border-none outline-none"
+                      />
                     </div>
                   </div>
                 </div>
@@ -58,7 +76,13 @@ const Events = () => {
                   <div className="self-stretch flex-1 rounded-t-sm flex flex-row items-start justify-start py-1 pl-4">
                     <div className="flex-1 h-12 flex flex-col items-start justify-center py-1 relative">
                       <div className="flex flex-row items-center justify-start z-0">
-                        <div className="relative tracking-normal leading-6">All</div>
+                        <input
+                          type="text"
+                          value={statusText}
+                          onChange={(e) => setStatusText(e.target.value)}
+                          placeholder="All"
+                          className="w-full h-full border-none outline-none" 
+                          />
                       </div>
                       <div className="m-0 absolute -top-3 -left-1 bg-white flex items-center px-1 z-10 text-xs">
                         <div className="relative leading-4">Status</div>
@@ -81,8 +105,19 @@ const Events = () => {
                     <div className="flex-1 h-12 flex flex-col items-start justify-center py-1 relative">
                       <div className="flex flex-row items-center justify-start z-0">
                         <div className="relative tracking-normal leading-6">
-                          MM/DD/YYYY - MM/DD/YYYY 
+                          {startDate && endDate
+                          ?`${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+                          :"MM/DD/YYYY - MM/DD/YYYY"} 
                         </div>
+                        <DatePicker
+                          selected={startDate}
+                          onChange={handleDateChange}
+                          startDate={startDate}
+                          endDate={endDate}
+                          selectsRange
+                          inline
+                          customInput={<FaCalendarAlt className="cursor-pointer"/>}
+                        />
                         <FaCalendarAlt/>
                       </div>
                       <div className="m-0 absolute -top-3 -left-1 bg-white flex items-center px-1 z-10 text-xs">

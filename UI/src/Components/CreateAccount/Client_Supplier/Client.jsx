@@ -151,7 +151,9 @@ const ModulLoginRegister = () => {
             </div>
 
             {/* Register Button */}
-            <button className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition cursor-pointer">
+            <button 
+              className="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition cursor-pointer"
+              onClick={() => navigate("/")}>
               {isClient ? "Register as Client" : "Register as Supplier"}
             </button>
           </form>
