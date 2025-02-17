@@ -1,26 +1,27 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const userRoutes = require('./Routes/UserRoute');
+
+dotenv.config();
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-const PORT = process.env.PORT;
-const MONGODB_URI = process.env.MONGODB_URI;
-
-// MongoDB Connection
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+    useUnifiedTopology: true
+}).then(() => console.log('MongoDB Connected'))
+  .catch(err => console.error('MongoDB Connection Failed:', err));
 
-app.get("/", (req, res) => {
-    res.send("Event CRM Backend Running 🚀");
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Backend is connected successfully' });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Routes
+app.use('/api/users', userRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

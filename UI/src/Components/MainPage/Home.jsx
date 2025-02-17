@@ -19,7 +19,7 @@ const LoginPage = () => {
         <div className="w-full max-w-md text-center">
           <h1 className="text-4xl font-bold text-gray-700">Welcome</h1>
           <p className="text-lg text-gray-600 mt-2">
-            New here? <span className="text-orange-400 cursor-pointer" onClick={() => navigate("/createAccount")}>
+            New here? <span className="text-orange-400 cursor-pointer" onClick={() => navigate("/createAccount/Admin")}>
               Create an account
             </span>
           </p>

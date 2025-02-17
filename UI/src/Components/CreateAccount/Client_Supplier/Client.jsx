@@ -21,7 +21,11 @@ const ModulLoginRegister = () => {
           </div>
 
           <div className="p-3 rounded-lg flex space-x-2">
-            <button className="w-1/2 py-2 text-orange-400 font-bold rounded-lg cursor-pointer">Representative</button>
+            <button 
+              className="w-1/2 py-2 text-orange-400 font-bold rounded-lg cursor-pointer"
+              onClick={() => navigate("/CreateAccount/Admin")}>
+              Representative
+              </button>
             <button 
               className="w-1/2 py-2 text-black font-bold rounded-lg cursor-pointer" 
               onClick={() => navigate("/Client")}>
