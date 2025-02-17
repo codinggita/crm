@@ -15,6 +15,7 @@
     "express": "^4.21.2",
     "hasura-connect": "^0.3.3",
     "mongoose": "^8.10.1",
-    "node": "^23.8.0"
+    "node": "^23.8.0",
+    "nodemon": "^3.1.9"
   }
 }
