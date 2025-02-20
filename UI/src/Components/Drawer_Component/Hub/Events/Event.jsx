@@ -1,5 +1,7 @@
 import { React, useCallback, useState } from 'react';
 import { FaSearch, FaArrowRight, FaSync, FaCalendarAlt, FaSort, FaEllipsisH, FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa"
+import CreateEvent from './CreateEvent'
+import EventView from './Eview';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,6 +10,8 @@ const Events = () => {
   const [endDate, setEndDate] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [statusText, setStatusText] = useState("");
+  const [showCreateEvent, setShowCreateEvent] = useState(false);
+  const [showEventView, setShowEventView] = useState(false);
 
   const handleDateChange = (dates) => {
     const [start, end] = dates;
@@ -19,6 +23,14 @@ const Events = () => {
     // Add your code here
   }, []);
   
+  if (showCreateEvent) {
+    return <CreateEvent />;
+  }
+
+  if (showEventView) {
+    return <EventView/>
+  }
+
   return (
     <div className="w-full relative drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)] flex flex-row items-start justify-center py-[30px] box-border text-left text-[14px] text-[#333] font-Inter">
       <div className="rounded-lg bg-white flex flex-col items-center justify-start">
@@ -36,8 +48,12 @@ const Events = () => {
             <div className="rounded-lg bg-[#e4822f] flex flex-row items-center justify-center py-3 px-4 gap-2">
               {/* Component icon replaced by an icon element */}
               <div className="w-5 h-5" />
-              <div className="flex flex-row items-center justify-start">
-                <b className="relative leading-[1.4]">New event</b>
+              <div 
+                className="flex flex-row items-center justify-start"
+                onClick={() => setShowCreateEvent(true)}>
+                <b 
+                  className="relative leading-[1.4]">
+                  New event</b>
               </div>
               <div className="w-5 h-5" />
             </div>
@@ -109,7 +125,7 @@ const Events = () => {
                           ?`${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
                           :"MM/DD/YYYY - MM/DD/YYYY"} 
                         </div>
-                        <DatePicker
+                        {/* <DatePicker
                           selected={startDate}
                           onChange={handleDateChange}
                           startDate={startDate}
@@ -117,7 +133,7 @@ const Events = () => {
                           selectsRange
                           inline
                           customInput={<FaCalendarAlt className="cursor-pointer"/>}
-                        />
+                        /> */}
                         <FaCalendarAlt/>
                       </div>
                       <div className="m-0 absolute -top-3 -left-1 bg-white flex items-center px-1 z-10 text-xs">
@@ -195,9 +211,10 @@ const Events = () => {
               </div>
               <div
                 className="flex-1 h-[60px] flex flex-row items-center justify-center px-6 cursor-pointer"
-                onClick={onActionsContainerClick}
-              >
-                <div className="flex-1 relative tracking-tight leading-[1.4] inline-block overflow-hidden overflow-<FaEllipsisH /> whitespace-nowrap h-5">
+                onClick={onActionsContainerClick}>
+                <div 
+                  className="flex-1 relative tracking-tight leading-[1.4] inline-block overflow-hidden overflow-<FaEllipsisH /> whitespace-nowrap h-5"
+                  onClick={() => setShowEventView(true)}>
                   Continuous Entrepreneurial Development: "Playground for Entrepreneurs" Workshop on October 26th.
                 </div>
               </div>
