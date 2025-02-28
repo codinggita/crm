@@ -8,6 +8,7 @@ import Change from "./Components/ChangePassword/Change";
 import Password from "./Components/ChangePassword/SetPassword/Password"; 
 import Message from './Components/ChangePassword/Notification/Message'
 import Drawer from './Components/Dashboard/Sidebar/Drawer';
+import Dashboard from "./Components/Dashboard/Client&Supplier/Dashboard";
 
 const App = () => {
   
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/SetPassword" element={<Password/>}/>
         <Route path="/Notification" element={<Message/>}/>
         <Route path="/Dashboard" element={<Drawer/>}/>
+        <Route path="/Client&Supplier" element={<Dashboard/>}/>
       </Routes>
     </Router>
   );
