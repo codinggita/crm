@@ -28,6 +28,8 @@ const ModulLoginRegister = () => {
                       navigate("/Dashboard");
                     } else if (role === "Change Password"){
                       navigate("/ChangePassword");
+                    } else if (role === "Supplier/Client"){
+                      navigate("/Client&Supplier");
                     }
                     // Add more conditions if you want to handle other roles.
                   }}
