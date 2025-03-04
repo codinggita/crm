@@ -9,6 +9,7 @@ import Password from "./Components/ChangePassword/SetPassword/Password";
 import Message from './Components/ChangePassword/Notification/Message'
 import Drawer from './Components/Dashboard/Sidebar/Drawer';
 import Dashboard from "./Components/Dashboard/Client&Supplier/Dashboard";
+import TicketHeader from "./Components/Dashboard/Client&Supplier/DrawerCompo/CreateTicket";
 
 const App = () => {
   
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/Notification" element={<Message/>}/>
         <Route path="/Dashboard" element={<Drawer/>}/>
         <Route path="/Client&Supplier" element={<Dashboard/>}/>
+        <Route path="/CreateTicket" element={<TicketHeader/>}/>
       </Routes>
     </Router>
   );
