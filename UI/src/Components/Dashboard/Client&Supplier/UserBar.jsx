@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes, FaUserAlt, FaEdit, FaEnvelopeOpen, FaBell, FaPaperclip, FaCogs, FaSignOutAlt } from "react-icons/fa";
+import { FaTimes , FaEdit, FaEnvelopeOpen, FaBell, FaPaperclip, FaCogs, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 // ProfileOption Component (unchanged)
@@ -24,9 +24,19 @@ const UserProfile = ({ onClose, setMainContent }) => {
   const navigate = useNavigate();
 
   const handleEditProfile = () => {
-    setMainContent("MyProfile"); // Set main content to "MyProfile"
-    onClose(); // Close the drawer
+    setMainContent("MyProfile");
+    onClose(); 
   };
+
+  const handleInbox = () => {
+    setMainContent("Inbox");
+    onClose();
+  };
+
+  const handleNotifications = () => {
+    setMainContent("Notification");
+    onClose();
+  }
 
   return (
     <div className="fixed top-0 right-0 h-full w-full sm:w-72 md:w-80 bg-white shadow-lg z-50 transform transition-transform duration-300 translate-x-0 rounded-tl-4xl rounded-bl-4xl">
@@ -59,8 +69,8 @@ const UserProfile = ({ onClose, setMainContent }) => {
                   chad_dennis98@domain.com
                 </div>
               </div>
-              <div className="w-12 h-12 rounded-lg bg-[#080808] border border-white flex items-center justify-center">
-                <FaUserAlt className="text-white text-xl" />
+              <div className="w-12 h-12 rounded-lg  border border-white flex items-center justify-center">
+                <img src="Client.jpg" className="text-white text-xl rounded-lg" />
               </div>
             </div>
           </div>
@@ -68,8 +78,8 @@ const UserProfile = ({ onClose, setMainContent }) => {
         {/* Main Options Group 1 */}
         <div className="self-stretch border-b border-[#ebebeb] flex flex-col items-end justify-start py-6 text-[#080808]">
           <ProfileOption icon={FaEdit} text="Edit Profile" onClick={handleEditProfile} />
-          <ProfileOption icon={FaEnvelopeOpen} text="Inbox" />
-          <ProfileOption icon={FaBell} text="Notifications" />
+          <ProfileOption icon={FaEnvelopeOpen} text="Inbox" onClick={handleInbox}/>
+          <ProfileOption icon={FaBell} text="Notifications" onClick={handleNotifications}/>
         </div>
         {/* Main Options Group 2 */}
         <div className="self-stretch border-b border-[#ebebeb] flex flex-col items-end justify-start py-6 text-[#080808]">
