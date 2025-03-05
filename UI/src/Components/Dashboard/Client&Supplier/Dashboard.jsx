@@ -2,6 +2,10 @@ import { React, useState } from "react";
 import { FaTachometerAlt, FaChevronUp, FaSquare } from "react-icons/fa";
 import Navbar from "./Topbar";
 import Profile from "./RightComponents/MyProfile";
+import Inbox from "./RightComponents/Inbox";
+import Chat from "./RightComponents/Chat";
+import Notification from "./RightComponents/Notification";
+import VoucherManagement from "./DrawerCompo/Tickets";
 
 // SidebarItem Component (unchanged)
 const SidebarItem = ({ icon, text, onClick, isSelected }) => (
@@ -104,15 +108,21 @@ const Dashboard = () => {
   const renderComponent = () => {
     switch (selectedComponent) {
       case "Dashboard":
-        return <div>Dashboard Content</div>; // Replace with your actual Dashboard component
+        return <div>Dashboard Content</div>; 
       case "Bidder":
-        return <div>Bidder Content</div>; // Replace with actual component if needed
+        return <div>Bidder Content</div>; 
       case "Contract":
-        return <div>Contract Content</div>; // Replace with actual component if needed
+        return <div>Contract Content</div>; 
       case "Tickets":
-        return <div>Tickets Content</div>; // Replace with actual component if needed
+        return <VoucherManagement/>; 
       case "MyProfile":
-        return <Profile />; // Render Profile component
+        return <Profile />; 
+      case "Notification":
+        return <Notification />;
+        case "Inbox":
+          return <Inbox setMainContent={setSelectedComponent} />;
+      case "Chat":
+        return <Chat />;
       default:
         return <div>Blank Screen</div>;
     }
@@ -122,7 +132,7 @@ const Dashboard = () => {
     <div className="flex">
       {/* Sidebar */}
       <div className="fixed left-0 top-0 h-full w-full md:w-[265px] bg-white text-[14px] text-[#e4822f] font-poppins z-40">
-        <Navbar setMainContent={setSelectedComponent} /> {/* Pass setSelectedComponent */}
+        <Navbar setMainContent={setSelectedComponent} />
         <div className="relative flex flex-col items-center w-full">
           <img
             className="z-0 w-[150px] h-[75px] mx-auto my-4"
