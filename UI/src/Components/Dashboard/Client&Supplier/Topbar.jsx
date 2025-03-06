@@ -1,5 +1,5 @@
 import { React, useState, useCallback } from "react";
-import { FaSearch, FaBell, FaUserAlt } from "react-icons/fa";
+import { FaSearch, FaBell } from "react-icons/fa";
 import UserProfile from "./UserBar";
 
 // SearchBar Component (unchanged)
@@ -42,8 +42,8 @@ const UserSection = ({ openUserProfile }) => (
           chad_dennis98@domain.com
         </div>
       </div>
-      <div className="w-12 h-12 rounded-[8px] bg-[#080808] border border-white flex items-center justify-center">
-        <FaUserAlt className="text-white text-xl" />
+      <div className="w-12 h-12 rounded-[8px] border border-white flex items-center justify-center">
+        <img src="Client.jpg" className="text-white text-xl rounded-[8px]" />
       </div>
     </div>
   </div>
