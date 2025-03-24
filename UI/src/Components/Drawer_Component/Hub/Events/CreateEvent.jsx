@@ -1,33 +1,53 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { MdCalendarToday, MdFormatBold, MdFormatItalic, MdFormatUnderlined, MdMoreHoriz, MdFormatAlignLeft, MdFormatAlignCenter, MdFormatListNumbered, MdInsertLink, MdUndo, MdRedo, MdTagFaces, MdMoreVert, MdInsertPhoto } from 'react-icons/md';
 import Event from './Event';
 
-
 const CreateEvent = () => {
-  // State to control visibility of Event component
   const [showEvent, setShowEvent] = useState(false);
-
-  // States for form fields
   const [eventName, setEventName] = useState('');
   const [location, setLocation] = useState('');
   const [status, setStatus] = useState('');
   const [availableSeats, setAvailableSeats] = useState('');
-
-  // Added states for startDate and endDate
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const startDatePickerRef = useRef(null);
-  const endDatePickerRef = useRef(null);
 
-  // Conditional rendering to show Event component when showEvent is true
+  const handleSave = async () => {
+    const eventData = {
+      eventName,
+      location,
+      status,
+      availableSeats: parseInt(availableSeats, 10),
+      startDate: startDate ? startDate.toISOString() : null, // Convert to ISO string
+      endDate: endDate ? endDate.toISOString() : null, // Convert to ISO string
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData),
+      });
+
+      if (response.ok) {
+        alert('Event saved successfully!');
+      } else {
+        alert('Failed to save event.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while saving the event.');
+    }
+  };
+
   if (showEvent) {
     return <Event />;
   }
 
   return (
-    // Main container with responsive design and shadow
     <div className="w-full relative drop-shadow-[0px_12px_24px_rgba(0,0,0,0.08)] flex flex-col top-35 justify-start py-[30px] px-[180px] text-left text-[20px] text-[#333] font-inter">
       <div className="self-stretch rounded-lg bg-white border-b border-[#ebebeb] overflow-hidden flex flex-col items-start justify-center">
         {/* Header Section */}
@@ -41,7 +61,7 @@ const CreateEvent = () => {
             <div className="rounded-lg border border-[#e4822f] flex flex-row items-center justify-center py-[12px] px-[16px] gap-[8px]">
               <div className="w-5 h-5 min-w-[10px] max-w-5 min-h-5 max-h-5"></div>
               {/* Back button with click handler */}
-              <div 
+              <div
                 className="flex flex-row items-center justify-start cursor-pointer"
                 onClick={() => setShowEvent(true)}>
                 <b className="relative leading-[140%]">Back</b>
@@ -71,7 +91,7 @@ const CreateEvent = () => {
                           value={eventName}
                           onChange={(e) => setEventName(e.target.value)}
                           className="w-full h-full bg-transparent border-none outline-none text-[16px] tracking-[0.5px] leading-[24px]"
-                          placeholder="Enter event name"/>
+                          placeholder="Enter event name" />
                       </div>
                       {/* Floating label */}
                       <div className="absolute top-[-12px] left-[-4px] bg-white flex flex-row items-center justify-start py-0 px-[4px] z-[1] text-[12px]">
@@ -96,7 +116,7 @@ const CreateEvent = () => {
                           value={location}
                           onChange={(e) => setLocation(e.target.value)}
                           className="w-full h-full bg-transparent border-none outline-none text-[16px] tracking-[0.5px] leading-[24px]"
-                          placeholder="Enter location"/>
+                          placeholder="Enter location" />
                       </div>
                       <div className="absolute top-[-12px] left-[-4px] bg-white flex flex-row items-center justify-start py-0 px-[4px] z-[1] text-[12px]">
                         <div className="relative leading-[16px]">Location</div>
@@ -125,40 +145,40 @@ const CreateEvent = () => {
                             <MdFormatItalic className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdFormatUnderlined className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdFormatUnderlined className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdFormatAlignLeft className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdFormatAlignLeft className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdFormatAlignCenter className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdFormatAlignCenter className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdFormatListNumbered className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdFormatListNumbered className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdInsertLink className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdInsertLink className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdTagFaces className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdTagFaces className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdMoreVert className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdMoreVert className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdInsertPhoto className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdInsertPhoto className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                         </div>
                         {/* Undo/Redo Controls */}
                         <div className="flex flex-row items-start justify-end gap-[24px] cursor-pointer">
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25">
-                            <MdUndo className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25"/>
+                            <MdUndo className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25">
-                            <MdRedo className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25"/>
+                            <MdRedo className="w-6 h-6 relative overflow-hidden flex-shrink-0 opacity-25" />
                           </div>
                           <div className="w-6 h-6 relative overflow-hidden flex-shrink-0">
-                            <MdMoreHoriz className="w-6 h-6 relative overflow-hidden flex-shrink-0"/>
+                            <MdMoreHoriz className="w-6 h-6 relative overflow-hidden flex-shrink-0" />
                           </div>
                         </div>
                       </div>
@@ -236,9 +256,9 @@ const CreateEvent = () => {
 
               {/* Available Seats Input */}
               <div className="self-stretch flex flex-row items-center justify-start gap-[110px]">
-                <div className="flex-1 relative group"> {/* 'relative' aur 'group' class add ki */}
+                <div className="flex-1 relative group">
                   <div className="self-stretch flex-1 rounded border border-[#333] flex flex-col items-start justify-start">
-                    <div className="self-stretch flex flex-col items-start justify-center relative h-[48px] py-[4px] pl-[16px] pr-[40px]"> {/* 'pr-[40px]' add kiya icon ke liye space */}
+                    <div className="self-stretch flex flex-col items-start justify-center relative h-[48px] py-[4px] pl-[16px] pr-[40px]">
                       <div className="flex flex-row items-center justify-start z-0">
                         <input
                           type="number"
@@ -268,10 +288,11 @@ const CreateEvent = () => {
                         placeholderText="DD/MM/YYYY"
                         dateFormat="dd/MM/yyyy"
                         className="w-full h-full bg-transparent rounded px-[16px] pr-[40px] text-[16px] tracking-[0.5px] leading-[24px] outline-none"
-                        ref={startDatePickerRef}/>
+                      />
                       <MdCalendarToday
                         className="absolute right-[16px] top-[50%] transform -translate-y-1/2 text-[#333] cursor-pointer"
-                        onClick={() => startDatePickerRef.current.setOpen(true)}/>
+                        onClick={() => document.querySelector('.react-datepicker-wrapper input').focus()}
+                      />
                       <div className="absolute top-[-12px] left-[-4px] bg-white flex flex-row items-center justify-start py-0 px-[4px] text-[12px]">
                         <div className="relative leading-[16px]">Start Date</div>
                       </div>
@@ -287,10 +308,11 @@ const CreateEvent = () => {
                         placeholderText="DD/MM/YYYY"
                         dateFormat="dd/MM/yyyy"
                         className="w-full h-full bg-transparent rounded px-[16px] pr-[40px] text-[16px] tracking-[0.5px] leading-[24px] outline-none"
-                        ref={endDatePickerRef}/>
+                      />
                       <MdCalendarToday
                         className="absolute right-[16px] top-[50%] transform -translate-y-1/2 text-[#333] cursor-pointer"
-                        onClick={() => endDatePickerRef.current.setOpen(true)}/>
+                        onClick={() => document.querySelector('.react-datepicker-wrapper input').focus()}
+                      />
                       <div className="absolute top-[-12px] left-[-4px] bg-white flex flex-row items-center justify-start py-0 px-[4px] text-[12px]">
                         <div className="relative leading-[16px]">End Date</div>
                       </div>
@@ -301,12 +323,9 @@ const CreateEvent = () => {
             </div>
           </div>
         </div>
-
-        {/* Footer Section */}
         <div className="self-stretch rounded-b-[12px] bg-white border-t border-[#ebebeb] overflow-hidden flex flex-col items-end justify-start py-[20px] px-[30px] text-center text-[14px] text-white">
           <div className="flex flex-row items-start justify-start">
-            {/* Save Button */}
-            <div className="rounded-lg bg-[#e4822f] flex flex-row items-center justify-center py-[12px] px-[16px] gap-[8px]">
+            <div className="rounded-lg bg-[#e4822f] flex flex-row items-center justify-center py-[12px] px-[16px] gap-[8px] cursor-pointer" onClick={handleSave}>
               <div className="w-5 h-5"></div>
               <div className="flex flex-row items-center justify-start">
                 <b className="relative leading-[140%]">Save</b>
